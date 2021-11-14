@@ -246,7 +246,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<span class="glyphicon glyphicon-home icon" aria-hidden="true"></span>
 							</div>
 							<h4 class="mission">Online Payment</h4>
-							<p class="description"><button> Pay With PayStack </button> </p>
+							<p class="description">
+								<input type="number" placeholder="Enter Amount To Donate In Naira" id="donate" style="
+								padding: 12px;
+								margin: 7px auto;
+								width: 90%;
+								border-radius: 4px;
+								border: thin solid #8c8700;
+								text-align: center;
+								font-size: 18px;
+								font-weight: 600;
+							">
+								<button onclick="DonateOnline()" style="border-radius: 6px; border: thin solid #8c8700; background: transparent; padding: 10px; color: #8c8700; font-weight: 600;"> Pay With Paystack </button> </p>
 				</div>
 			</div>
 			<div class="clearfix"></div>
@@ -330,7 +341,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<p>Need A Direct Contact? Give Us A Call Or A Direct E-mail</p>
 					<ul>
 						<!-- <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Address : 1234k Avenue, 4th block, <span>Newyork City.</span></li> -->
-						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:kateamosunfoundation.com">kateamosunfoundation.com</a></li>
+						<li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : <a href="mailto:kateamosunfoundation@gmail.com">kateamosunfoundation@gmail.com</a></li>
 						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : +234(91) 5557 1427</li>
 						<li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Phone : +234(80) 3378 0863</li>
 					</ul>
@@ -377,6 +388,26 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		*/								
 		$().UItoTop({ easingType: 'easeOutQuart' });
 		});
+	</script>
+	<script type="text/javascript" src="https://js.paystack.co/v1/inline.js"></script>
+	<script type="text/javascript">
+		function DonateOnline(){
+			var Money = $('#donate').val();
+			var handler = PaystackPop.setup({
+				key: 'pk_test_4e097f3cce26b7de48a7de8d537f49d1989974bf',
+				email: 'divine2nab@gmail.com',
+				amount: Money * 100,
+				currency: 'NGN',
+				callback: function(response){
+					console.log(response);
+					alert('Thank You. Your Donation of '+ Money +' NGN Has Been Succesfully Recieved.');
+				},
+				onClose: function(){
+					alert('Transaction Was Cancelled Halfway. Please Try Again.');
+				}
+			});
+			handler.openIframe();
+		}
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 <!-- //smooth scrolling -->
