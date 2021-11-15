@@ -418,48 +418,23 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<script type="text/javascript" src="https://js.paystack.co/v1/inline.js"></script>
-	<script src="https://checkout.flutterwave.com/v3.js"></script>
 	<script type="text/javascript">
 		function DonateOnline(){
 			var Money = $('#donate').val();
-			FlutterwaveCheckout({
-				public_key: "FLWPUBK_TEST-SANDBOXDEMOKEY-X",
-				tx_ref: "RX1",
-				amount: 10,
-				currency: "NGN",
-				country: "NG",
-				payment_options: " ",
-				customer: {
-					email: "cornelius@gmail.com",
-					phone_number: "08102909304",
-					name: "Flutterwave Developers",
+			var handler = PaystackPop.setup({
+				key: 'pk_test_7c194c04811d27ebd045c85eb5643e84ad48a4b4',
+				email: 'divine2nab@gmail.com',
+				amount: Money * 100,
+				currency: 'NGN',
+				callback: function(response){
+					console.log(response);
+					alert('Thank You. Your Donation of '+ Money +' NGN Has Been Succesfully Recieved.');
 				},
-				callback: function (data) {
-					console.log(data);
-				},
-				onclose: function() {
-					// close modal
-				},
-				customizations: {
-					title: "The Kate Amosun Foundation",
-					description: "Empowering Women Businesses",
-					logo: "https://makatefoundation-demo.netlify.app/images/logo.png",
-				},
+				onClose: function(){
+					alert('Transaction Was Cancelled Halfway. Please Try Again.');
+				}
 			});
-			// var handler = PaystackPop.setup({
-			// 	key: 'pk_test_7c194c04811d27ebd045c85eb5643e84ad48a4b4',
-			// 	email: 'divine2nab@gmail.com',
-			// 	amount: Money * 100,
-			// 	currency: 'NGN',
-			// 	callback: function(response){
-			// 		console.log(response);
-			// 		alert('Thank You. Your Donation of '+ Money +' NGN Has Been Succesfully Recieved.');
-			// 	},
-			// 	onClose: function(){
-			// 		alert('Transaction Was Cancelled Halfway. Please Try Again.');
-			// 	}
-			// });
-			// handler.openIframe();
+			handler.openIframe();
 		}
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
