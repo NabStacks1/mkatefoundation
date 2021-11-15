@@ -225,20 +225,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 		<div class="clearfix"></div>
 		<div class="abt-btm">
-			<div class="col-md-4 bottom-gds">
-				<div class="bott-img">
-							<div class="icon-holder">
-								<span class="glyphicon glyphicon-education icon" aria-hidden="true"></span>
-							</div>
-							<h4 class="mission">Bank Transfer</h4>
-							<p class="description">
-								<b> Account Name : </b> Virtual Global Impression Ltd <br>
-								<b> Bank Name : </b> Access Bank <br>
-								<b> Account Number : </b> 0055774242 <br>
-							</p>
-				</div>
-			</div>
-			<div class="col-md-4 bottom-gds">
+			<div class="col-md-6 bottom-gds">
 				<div class="bott-img">
 							<div class="icon-holder">
 								<span class="glyphicon glyphicon-education icon" aria-hidden="true"></span>
@@ -251,7 +238,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</p>
 				</div>
 			</div>
-			<div class="col-md-4 bottom-gds">
+			<div class="col-md-6 bottom-gds">
 				<div class="bott-img">
 							<div class="icon-holder">
 								<span class="glyphicon glyphicon-home icon" aria-hidden="true"></span>
@@ -431,23 +418,48 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		});
 	</script>
 	<script type="text/javascript" src="https://js.paystack.co/v1/inline.js"></script>
+	<script src="https://checkout.flutterwave.com/v3.js"></script>
 	<script type="text/javascript">
 		function DonateOnline(){
 			var Money = $('#donate').val();
-			var handler = PaystackPop.setup({
-				key: 'pk_test_4e097f3cce26b7de48a7de8d537f49d1989974bf',
-				email: 'divine2nab@gmail.com',
-				amount: Money * 100,
-				currency: 'NGN',
-				callback: function(response){
-					console.log(response);
-					alert('Thank You. Your Donation of '+ Money +' NGN Has Been Succesfully Recieved.');
+			FlutterwaveCheckout({
+				public_key: "FLWPUBK_TEST-SANDBOXDEMOKEY-X",
+				tx_ref: "RX1",
+				amount: 10,
+				currency: "NGN",
+				country: "NG",
+				payment_options: " ",
+				customer: {
+					email: "cornelius@gmail.com",
+					phone_number: "08102909304",
+					name: "Flutterwave Developers",
 				},
-				onClose: function(){
-					alert('Transaction Was Cancelled Halfway. Please Try Again.');
-				}
+				callback: function (data) {
+					console.log(data);
+				},
+				onclose: function() {
+					// close modal
+				},
+				customizations: {
+					title: "The Kate Amosun Foundation",
+					description: "Empowering Women Businesses",
+					logo: "https://makatefoundation-demo.netlify.app/images/logo.png",
+				},
 			});
-			handler.openIframe();
+			// var handler = PaystackPop.setup({
+			// 	key: 'pk_test_7c194c04811d27ebd045c85eb5643e84ad48a4b4',
+			// 	email: 'divine2nab@gmail.com',
+			// 	amount: Money * 100,
+			// 	currency: 'NGN',
+			// 	callback: function(response){
+			// 		console.log(response);
+			// 		alert('Thank You. Your Donation of '+ Money +' NGN Has Been Succesfully Recieved.');
+			// 	},
+			// 	onClose: function(){
+			// 		alert('Transaction Was Cancelled Halfway. Please Try Again.');
+			// 	}
+			// });
+			// handler.openIframe();
 		}
 	</script>
 	<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
