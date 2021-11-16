@@ -209,7 +209,7 @@ nav1 a:focus {
 }
 /*-- //Effect 11 --*/
 .banner-info {
-    margin-top: 13em;
+    margin-top: 13em !important;
     text-align: center;
 }
 .logo-text h3 {
